@@ -4,7 +4,6 @@ package com.example.shashidhar.trial;
  * Created by Shashidhar on 28-10-2017.
  */
 
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
@@ -49,8 +48,6 @@ public class RssFeedListAdapter
     @Override
     public void onBindViewHolder(FeedModelViewHolder holder, int position) {
         final RssFeedModel rssFeedModel = mRssFeedModels.get(position);
-        URL url = new URL(rssFeedModel.imgurl);
-        Bitmap bmp =
         ((TextView)holder.rssFeedView.findViewById(R.id.titleText)).setText(rssFeedModel.imgurl);
         ((TextView)holder.rssFeedView.findViewById(R.id.descriptionText)).setText(rssFeedModel.description);
         ((TextView)holder.rssFeedView.findViewById(R.id.linkText)).setText(rssFeedModel.link);
