@@ -159,41 +159,42 @@ public class MainActivity extends AppCompatActivity {
 
                     Log.d("MyXmlParser", "Parsing name ==> " + name);
                     String result = "";
-                    if (xmlPullParser.next() == XmlPullParser.TEXT) {
+                    if (xmlPullParser.next() == XmlPullParser.TEXT ) {
                         result = xmlPullParser.getText();
-                        xmlPullParser.nextTag();
+                        //xmlPullParser.nextTag();
                     }
                     else {
                         if (name.equalsIgnoreCase("media:thumbnail")) {
                             imgurl =  xmlPullParser.getAttributeValue(null,"url");
-                            xmlPullParser.nextTag();
+
                         }
                     }
-
-                    if (name.equalsIgnoreCase("title")) {
+                    xmlPullParser.nextTag();
+                    if (name.equalsIgnoreCase("title")&& isItem) {
                         title = result;
-                    } else if (name.equalsIgnoreCase("link")) {
+                    } else if (name.equalsIgnoreCase("link")&& isItem) {
                         link = result;
-                    } else if (name.equalsIgnoreCase("description")) {
+                    } else if (name.equalsIgnoreCase("description")&& isItem) {
                         description = result;
                     }
 
 
-                    if (title != null && link != null && description != null) {
-                        if(isItem) {
+                    if (title != null && link != null && description != null && imgurl!= null) {
+                        if(isItem ) {
                             RssFeedModel item = new RssFeedModel(title, link, description,imgurl);
                             items.add(item);
                         }
                         else {
-                            mFeedTitle = title;
-                            mFeedLink = link;
-                            mFeedDescription = description;
+                          mFeedTitle = title;
+                        mFeedLink = link;
+                        mFeedDescription = description;
 
                         }
 
                         title = null;
                         link = null;
                         description = null;
+                        imgurl = null;
                         isItem = false;
                     }
                 }
