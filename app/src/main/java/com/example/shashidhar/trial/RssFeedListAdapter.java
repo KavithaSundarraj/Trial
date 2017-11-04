@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
+import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,7 +79,15 @@ public class RssFeedListAdapter
 
         ((TextView)holder.rssFeedView.findViewById(R.id.titleText)).setText(rssFeedModel.title);
         ((TextView)holder.rssFeedView.findViewById(R.id.descriptionText)).setText(rssFeedModel.description);
-        ((TextView)holder.rssFeedView.findViewById(R.id.linkText)).setText(rssFeedModel.link);
+
+
+
+        // To display URL as link
+        final TextView myClickableUrl = (TextView) holder.rssFeedView.findViewById(R.id.linkText);
+        myClickableUrl.setText(rssFeedModel.link);
+        Linkify.addLinks(myClickableUrl, Linkify.WEB_URLS);
+
+        //((TextView)holder.rssFeedView.findViewById(R.id.linkText)).setText(rssFeedModel.link);
        // ((ImageView)holder.rssFeedView.findViewById(R.id.imgurlText)).setImageDrawable(Drawable.createFromPath(rssFeedModel.imgurl));
 
         ImageView bindImage = (ImageView)holder.rssFeedView.findViewById(R.id.imgurlText);

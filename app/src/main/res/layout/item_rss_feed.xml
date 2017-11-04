@@ -19,7 +19,8 @@
     <TextView
         android:id="@+id/linkText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:autoLink="web" />
 
     <ImageView
         android:id="@+id/imgurlText"
