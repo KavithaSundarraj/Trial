@@ -11,12 +11,12 @@
     tools:context="com.example.shashidhar.trial.MainActivity">
 
     <Button
-        android:id="@+id/fetchFeedButton"
+        android:id="@+id/SearchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="Fetch" />
+        android:text="Search" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -24,9 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_toStartOf="@id/fetchFeedButton"
-        android:layout_toLeftOf="@id/fetchFeedButton"
-        android:hint="Rss feed source">
+        android:layout_toStartOf="@id/SearchButton"
+        android:layout_toLeftOf="@id/SearchButton"
+        android:hint="Keyword to search">
 
         <EditText
             android:id="@+id/rssFeedEditText"
@@ -35,7 +35,7 @@
 
     </android.support.design.widget.TextInputLayout>
 
-    <TextView
+    <!--<TextView
         android:id="@+id/feedTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/feedDescription"
-        android:text="Feed Link: " />
+        android:text="Feed Link: " />-->
 
 
 
@@ -62,7 +62,7 @@
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/feedLink"
+        android:layout_below="@id/SearchButton"
         android:layout_marginTop="@dimen/activity_vertical_margin">
 
         <android.support.v7.widget.RecyclerView

@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -35,9 +37,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView mFeedLinkTextView;
     private TextView mFeedDescriptionTextView;
     private List<RssFeedModel> mFeedModelList;
-    private String mFeedTitle;
-    private String mFeedLink;
-    private String mFeedDescription;
+  //  private String mFeedTitle;
+  //  private String mFeedLink;
+  //  private String mFeedDescription;
+
+    private String FeedUrl;
 
 
     @Override
@@ -47,19 +51,22 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mEditText = (EditText) findViewById(R.id.rssFeedEditText);
-        mFetchFeedButton = (Button) findViewById(R.id.fetchFeedButton);
+        mFetchFeedButton = (Button) findViewById(R.id.SearchButton);
         mSwipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
-        mFeedTitleTextView = (TextView) findViewById(R.id.feedTitle);
-        mFeedDescriptionTextView = (TextView) findViewById(R.id.feedDescription);
-        mFeedLinkTextView = (TextView) findViewById(R.id.feedLink);
+        //mFeedTitleTextView = (TextView) findViewById(R.id.feedTitle);
+        //mFeedDescriptionTextView = (TextView) findViewById(R.id.feedDescription);
+        //mFeedLinkTextView = (TextView) findViewById(R.id.feedLink);
 
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+
+
         mFetchFeedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new FetchFeedTask().execute((Void) null);
+              //  new FetchFeedTask().execute((Void) null);
             }
         });
         mSwipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -70,6 +77,52 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.news_menu, menu);//Menu Resource, Menu
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.Top_Stories:
+                //Toast.makeText(getApplicationContext(),"Item 1 Selected",Toast.LENGTH_LONG).show();
+                // new FetchFeedTask().execute("http://feeds.bbci.co.uk/news/rss.xml");
+                FeedUrl = new String("feeds.bbci.co.uk/news/rss.xml");
+                new FetchFeedTask().execute((Void) null);
+                return true;
+            case R.id.World:
+                //Toast.makeText(getApplicationContext(),"Item 2 Selected",Toast.LENGTH_LONG).show();
+                FeedUrl = new String("feeds.bbci.co.uk/news/world/rss.xml");
+                new FetchFeedTask().execute((Void) null);
+                return true;
+            case R.id.Business:
+                //Toast.makeText(getApplicationContext(),"Item 2 Selected",Toast.LENGTH_LONG).show();
+                FeedUrl = new String("feeds.bbci.co.uk/news/business/rss.xml");
+                new FetchFeedTask().execute((Void) null);
+                return true;
+            case R.id.Politics:
+                //Toast.makeText(getApplicationContext(),"Item 2 Selected",Toast.LENGTH_LONG).show();
+                FeedUrl = new String("feeds.bbci.co.uk/news/politics/rss.xml");
+                new FetchFeedTask().execute((Void) null);
+                return true;
+            case R.id.Health:
+                //Toast.makeText(getApplicationContext(),"Item 2 Selected",Toast.LENGTH_LONG).show();
+                FeedUrl = new String("feeds.bbci.co.uk/news/health/rss.xml");
+                new FetchFeedTask().execute((Void) null);
+                return true;
+            case R.id.Technology:
+                //Toast.makeText(getApplicationContext(),"Item 2 Selected",Toast.LENGTH_LONG).show();
+                FeedUrl = new String("feeds.bbci.co.uk/news/technology/rss.xml");
+                new FetchFeedTask().execute((Void) null);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private class FetchFeedTask extends AsyncTask<Void, Void, Boolean> {
 
         private String urlLink;
@@ -77,7 +130,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             mSwipeLayout.setRefreshing(true);
-            urlLink = mEditText.getText().toString();
+           // urlLink = mEditText.getText().toString();
+            urlLink = FeedUrl;
         }
 
         @Override
@@ -106,9 +160,9 @@ public class MainActivity extends AppCompatActivity {
             mSwipeLayout.setRefreshing(false);
 
             if (success) {
-                mFeedTitleTextView.setText("Feed Title: " + mFeedTitle);
-                mFeedDescriptionTextView.setText("Feed Description: " + mFeedDescription);
-                mFeedLinkTextView.setText("Feed Link: " + mFeedLink);
+              //  mFeedTitleTextView.setText("Feed Title: " + mFeedTitle);
+               // mFeedDescriptionTextView.setText("Feed Description: " + mFeedDescription);
+               // mFeedLinkTextView.setText("Feed Link: " + mFeedLink);
 
 
                 // Fill RecyclerView
@@ -185,9 +239,9 @@ public class MainActivity extends AppCompatActivity {
                             items.add(item);
                         }
                         else {
-                          mFeedTitle = title;
-                        mFeedLink = link;
-                        mFeedDescription = description;
+                            //mFeedTitle = title;
+                            //mFeedLink = link;
+                            //mFeedDescription = description;
 
                         }
 

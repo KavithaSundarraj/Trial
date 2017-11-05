@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SimpleRSSReader</string>
+    <string name="app_name">NEWS</string>
+    <string name="Top_Stories">Top Stories</string>
+    <string name="World">World</string>
+    <string name="Business">Business</string>
+    <string name="Politics">Politics</string>
+    <string name="Health">Health</string>
+    <string name="Technology">Technology</string>
 </resources>
