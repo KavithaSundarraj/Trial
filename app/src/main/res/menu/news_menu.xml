@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/Top_Stories"
+        android:title="@string/Top_Stories"/>
+    <item android:id="@+id/World"
+         android:title="@string/World" />
+    <item android:id="@+id/Business"
+        android:title="@string/Business" />
+    <item android:id="@+id/Politics"
+        android:title="@string/Politics" />
+    <item android:id="@+id/Health"
+        android:title="@string/Health" />
+    <item android:id="@+id/Technology"
+        android:title="@string/Technology" />
+   </menu>
