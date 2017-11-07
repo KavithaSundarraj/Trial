@@ -18,4 +18,6 @@ public class RssFeedModel {
         this.description = description;
         this.imgurl = imgurl;
     }
+
+
 }

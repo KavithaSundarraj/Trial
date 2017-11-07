@@ -37,12 +37,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView mFeedLinkTextView;
     private TextView mFeedDescriptionTextView;
     private List<RssFeedModel> mFeedModelList;
+    private List<RssFeedModel> searchList;
   //  private String mFeedTitle;
   //  private String mFeedLink;
   //  private String mFeedDescription;
 
     private String FeedUrl;
-
+    private String SearchKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,16 @@ public class MainActivity extends AppCompatActivity {
         mFetchFeedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SearchKey=mEditText.getText().toString();
+                searchList = new ArrayList<>();
+                for(RssFeedModel search:mFeedModelList)
+                {
+                    if(search.title.contains(SearchKey))
+                    {
+                        searchList.add(search);
+                    }
+                }
+                mRecyclerView.setAdapter(new RssFeedListAdapter(searchList));
               //  new FetchFeedTask().execute((Void) null);
             }
         });
