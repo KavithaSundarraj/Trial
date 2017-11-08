@@ -4,21 +4,14 @@ package com.example.shashidhar.trial;
  * Created by Shashidhar on 28-10-2017.
  */
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
+
 import android.support.v7.widget.RecyclerView;
 import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.InputStream;
-import java.net.URL;
 import java.util.List;
 
 
@@ -49,47 +42,17 @@ public class RssFeedListAdapter
         return holder;
     }
 
-    private class DownloadImageWithURLTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-        public DownloadImageWithURLTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String pathToFile = urls[0];
-            Bitmap bitmap = null;
-            try {
-                InputStream in = new java.net.URL(pathToFile).openStream();
-                bitmap = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                //Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return bitmap;
-        }
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
-    }
-
     @Override
     public void onBindViewHolder(FeedModelViewHolder holder, int position) {
         final RssFeedModel rssFeedModel = mRssFeedModels.get(position);
 
-
         ((TextView)holder.rssFeedView.findViewById(R.id.titleText)).setText(rssFeedModel.title);
         ((TextView)holder.rssFeedView.findViewById(R.id.descriptionText)).setText(rssFeedModel.description);
-
-
-
         // To display URL as link
         final TextView myClickableUrl = (TextView) holder.rssFeedView.findViewById(R.id.linkText);
         myClickableUrl.setText(rssFeedModel.link);
         Linkify.addLinks(myClickableUrl, Linkify.WEB_URLS);
-
-        //((TextView)holder.rssFeedView.findViewById(R.id.linkText)).setText(rssFeedModel.link);
-       // ((ImageView)holder.rssFeedView.findViewById(R.id.imgurlText)).setImageDrawable(Drawable.createFromPath(rssFeedModel.imgurl));
-
+        //To display string as image
         ImageView bindImage = (ImageView)holder.rssFeedView.findViewById(R.id.imgurlText);
         String pathToFile = rssFeedModel.imgurl;
         DownloadImageWithURLTask downloadTask = new DownloadImageWithURLTask(bindImage);
