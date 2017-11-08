@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         mFetchFeedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Feed.SearchKey=mEditText.getText().toString();
                 Feed.search(Feed.SearchKey);
 
@@ -63,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.World:
                 Feed.FeedUrl  = new String("feeds.bbci.co.uk/news/world/rss.xml");
+                Feed.execute((Void) null);
+                return true;
+            case R.id.Europe:
+                Feed.FeedUrl  = new String("feeds.bbci.co.uk/news/world/europe/rss.xml");
                 Feed.execute((Void) null);
                 return true;
             case R.id.Business:

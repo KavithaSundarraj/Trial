@@ -55,7 +55,7 @@ public class RssFeedListAdapter
         //To display string as image
         ImageView bindImage = (ImageView)holder.rssFeedView.findViewById(R.id.imgurlText);
         String pathToFile = rssFeedModel.imgurl;
-        DownloadImageWithURLTask downloadTask = new DownloadImageWithURLTask(bindImage);
+        URLToImage downloadTask = new URLToImage(bindImage);
         downloadTask.execute(pathToFile);
     }
 

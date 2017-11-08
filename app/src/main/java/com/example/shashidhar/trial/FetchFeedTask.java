@@ -4,9 +4,7 @@ import android.os.AsyncTask;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
-import android.util.Xml;
-import org.xmlpull.v1.XmlPullParser;
+
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
@@ -63,7 +61,8 @@ import java.util.List;
 
                 URL url = new URL(FeedUrl);
                 InputStream inputStream = url.openConnection().getInputStream();
-                mFeedModelList = parseFeed(inputStream);
+                ParserXml xmlparse=new ParserXml();
+                mFeedModelList = xmlparse.parseFeed(inputStream);
                 return true;
             } catch (IOException e) {
                 //Log.e(TAG, "Error", e);
@@ -87,92 +86,6 @@ import java.util.List;
                         "Enter a valid Rss feed url",
                         Toast.LENGTH_LONG).show(); */
             }
-
-
-
-        public List<RssFeedModel> parseFeed(InputStream inputStream) throws XmlPullParserException,
-                IOException {
-            String title = null;
-            String link = null;
-            String description = null;
-            String imgurl = null;
-            boolean isItem = false;
-            List<RssFeedModel> items = new ArrayList<>();
-
-            try {
-                XmlPullParser xmlPullParser = Xml.newPullParser();
-                xmlPullParser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-                xmlPullParser.setInput(inputStream, null);
-
-                xmlPullParser.nextTag();
-                while (xmlPullParser.next() != XmlPullParser.END_DOCUMENT) {
-                    int eventType = xmlPullParser.getEventType();
-
-                    String name = xmlPullParser.getName();
-                    if(name == null)
-                        continue;
-
-                    if(eventType == XmlPullParser.END_TAG) {
-                        if(name.equalsIgnoreCase("item")) {
-                            isItem = false;
-                        }
-                        continue;
-                    }
-
-                    if (eventType == XmlPullParser.START_TAG) {
-                        if(name.equalsIgnoreCase("item")) {
-                            isItem = true;
-                            continue;
-                        }
-                    }
-
-                    Log.d("MyXmlParser", "Parsing name ==> " + name);
-                    String result = "";
-                    if (xmlPullParser.next() == XmlPullParser.TEXT ) {
-                        result = xmlPullParser.getText();
-                        //xmlPullParser.nextTag();
-                    }
-                    else {
-                        if (name.equalsIgnoreCase("media:thumbnail")) {
-                            imgurl =  xmlPullParser.getAttributeValue(null,"url");
-
-                        }
-                    }
-                    xmlPullParser.nextTag();
-                    if (name.equalsIgnoreCase("title")&& isItem) {
-                        title = result;
-                    } else if (name.equalsIgnoreCase("link")&& isItem) {
-                        link = result;
-                    } else if (name.equalsIgnoreCase("description")&& isItem) {
-                        description = result;
-                    }
-
-
-                    if (title != null && link != null && description != null && imgurl!= null) {
-                        if(isItem ) {
-                            RssFeedModel item = new RssFeedModel(title, link, description,imgurl);
-                            items.add(item);
-                        }
-                        else {
-                            //mFeedTitle = title;
-                            //mFeedLink = link;
-                            //mFeedDescription = description;
-
-                        }
-
-                        title = null;
-                        link = null;
-                        description = null;
-                        imgurl = null;
-                        isItem = false;
-                    }
-                }
-
-                return items;
-            } finally {
-                inputStream.close();
-            }
-        }
 
 
     }

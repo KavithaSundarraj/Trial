@@ -11,9 +11,9 @@ import java.io.InputStream;
  * Created by tmp-sda-1124 on 11/8/17.
  */
 
-public class DownloadImageWithURLTask extends AsyncTask<String, Void, Bitmap> {
+public class URLToImage extends AsyncTask<String, Void, Bitmap> {
     ImageView bmImage;
-    public DownloadImageWithURLTask(ImageView bmImage) {
+    public URLToImage(ImageView bmImage) {
         this.bmImage = bmImage;
     }
 
