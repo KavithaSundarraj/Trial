@@ -36,22 +36,24 @@ public class RssFeedListAdapter
 
     @Override
     public FeedModelViewHolder onCreateViewHolder(ViewGroup parent, int type) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_rss_feed, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rss_feed, parent, false);
         FeedModelViewHolder holder = new FeedModelViewHolder(v);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(FeedModelViewHolder holder, int position) {
+
         final RssFeedModel rssFeedModel = mRssFeedModels.get(position);
 
         ((TextView)holder.rssFeedView.findViewById(R.id.titleText)).setText(rssFeedModel.title);
         ((TextView)holder.rssFeedView.findViewById(R.id.descriptionText)).setText(rssFeedModel.description);
+
         // To display URL as link
         final TextView myClickableUrl = (TextView) holder.rssFeedView.findViewById(R.id.linkText);
         myClickableUrl.setText(rssFeedModel.link);
         Linkify.addLinks(myClickableUrl, Linkify.WEB_URLS);
+
         //To display string as image
         ImageView bindImage = (ImageView)holder.rssFeedView.findViewById(R.id.imgurlText);
         String pathToFile = rssFeedModel.imgurl;

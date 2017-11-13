@@ -3,6 +3,7 @@ package com.example.shashidhar.trial;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.ImageView;
 
 import java.io.InputStream;
@@ -24,7 +25,7 @@ public class URLToImage extends AsyncTask<String, Void, Bitmap> {
             InputStream in = new java.net.URL(pathToFile).openStream();
             bitmap = BitmapFactory.decodeStream(in);
         } catch (Exception e) {
-            //Log.e("Error", e.getMessage());
+            Log.e("Error", e.getMessage());
             e.printStackTrace();
         }
         return bitmap;

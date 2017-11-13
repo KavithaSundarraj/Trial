@@ -35,28 +35,6 @@
 
     </android.support.design.widget.TextInputLayout>
 
-    <!--<TextView
-        android:id="@+id/feedTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textInputLayout"
-        android:text="Feed Title: " />
-
-    <TextView
-        android:id="@+id/feedDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/feedTitle"
-        android:text="Feed Description: " />
-
-    <TextView
-        android:id="@+id/feedLink"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/feedDescription"
-        android:text="Feed Link: " />-->
-
-
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
