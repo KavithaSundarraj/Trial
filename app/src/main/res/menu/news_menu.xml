@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/Top_Stories"
-        android:title="@string/Top_Stories"/>
+<!--<menu xmlns:android="http://schemas.android.com/apk/res/android">-->
+    <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/Top_Stories"
+        android:icon="@drawable/newslogo"
+        android:title="@string/Top_Stories"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
     <item android:id="@+id/World"
-         android:title="@string/World" />
+        android:title="@string/World" />
     <item android:id="@+id/Europe"
         android:title="@string/Europe" />
     <item android:id="@+id/Business"
