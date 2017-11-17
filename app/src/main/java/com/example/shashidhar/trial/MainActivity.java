@@ -1,6 +1,7 @@
 package com.example.shashidhar.trial;
 
 import android.os.AsyncTask;
+
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 
 import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     public String FeedUrl;
     public String SearchKey;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +67,17 @@ public class MainActivity extends AppCompatActivity {
                 new FetchFeedTask().execute((Void) null);
             }
         });
+
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.news_menu, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

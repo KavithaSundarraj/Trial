@@ -14,12 +14,13 @@ import java.io.InputStream;
 
 public class URLToImage extends AsyncTask<String, Void, Bitmap> {
     ImageView bmImage;
+    String pathToFile;
     public URLToImage(ImageView bmImage) {
         this.bmImage = bmImage;
     }
 
     protected Bitmap doInBackground(String... urls) {
-        String pathToFile = urls[0];
+        pathToFile = urls[0];
         Bitmap bitmap = null;
         try {
             InputStream in = new java.net.URL(pathToFile).openStream();

@@ -10,6 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.shashidhar.trial.MainActivity">
 
+
+
     <Button
         android:id="@+id/SearchButton"
         android:layout_width="wrap_content"
@@ -34,7 +36,6 @@
             android:layout_height="wrap_content" />
 
     </android.support.design.widget.TextInputLayout>
-
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
