@@ -14,12 +14,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
 
-
+/**
+ * View
+ */
 
 public class RssFeedListAdapter
         extends RecyclerView.Adapter<RssFeedListAdapter.FeedModelViewHolder> {
 
     private List<RssFeedModel> mRssFeedModels;
+
+    /**
+     * Inner Class
+     */
 
     public static class FeedModelViewHolder extends RecyclerView.ViewHolder {
         private View rssFeedView;
@@ -30,10 +36,20 @@ public class RssFeedListAdapter
         }
     }
 
+    /**
+     * Creates a new RssFeedListAdapter
+     * @param rssFeedModels
+     */
     public RssFeedListAdapter(List<RssFeedModel> rssFeedModels) {
         mRssFeedModels = rssFeedModels;
     }
 
+    /**
+     * To create View Holder
+     * @param parent
+     * @param type
+     * @return FeedModelViewHolder
+     */
     @Override
     public FeedModelViewHolder onCreateViewHolder(ViewGroup parent, int type) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rss_feed, parent, false);
@@ -41,12 +57,19 @@ public class RssFeedListAdapter
         return holder;
     }
 
+    /**
+     * To diplay and bind the news details in view holder
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(FeedModelViewHolder holder, int position) {
 
         final RssFeedModel rssFeedModel = mRssFeedModels.get(position);
-
+        // To display Title
         ((TextView)holder.rssFeedView.findViewById(R.id.titleText)).setText(rssFeedModel.title);
+
+        //To display Description
         ((TextView)holder.rssFeedView.findViewById(R.id.descriptionText)).setText(rssFeedModel.description);
 
         // To display URL as link
@@ -61,6 +84,10 @@ public class RssFeedListAdapter
         downloadTask.execute(pathToFile);
     }
 
+    /**
+     * To calculate the size
+     * @return int count of mRssFeedModels
+     */
     @Override
     public int getItemCount() {
         return mRssFeedModels.size();

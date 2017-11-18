@@ -15,8 +15,18 @@ import java.util.List;
  * Created by Shashidhar on 08-11-2017.
  */
 
+/**
+ * Controller - To parse the Xml inputstream and create RssFeedModels
+ */
 public class ParserXml {
 
+    /**
+     * Function to extract RSSFeedModel details from input stream
+     * @param inputStream
+     * @return List<RssFeedModel>
+     * @throws XmlPullParserException
+     * @throws IOException
+     */
     public List<RssFeedModel> parseFeed(InputStream inputStream) throws XmlPullParserException,
             IOException {
         String title = null;
@@ -57,8 +67,7 @@ public class ParserXml {
                 String result = "";
                 if (xmlPullParser.next() == XmlPullParser.TEXT ) {
                     result = xmlPullParser.getText();
-                    //xmlPullParser.nextTag();
-                }
+                    }
                 else {
                     if (name.equalsIgnoreCase("media:thumbnail")) {
                         imgurl =  xmlPullParser.getAttributeValue(null,"url");
@@ -80,13 +89,6 @@ public class ParserXml {
                         RssFeedModel item = new RssFeedModel(title, link, description,imgurl);
                         items.add(item);
                     }
-                    else {
-                        //mFeedTitle = title;
-                        //mFeedLink = link;
-                        //mFeedDescription = description;
-
-                    }
-
                     title = null;
                     link = null;
                     description = null;
