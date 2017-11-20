@@ -17,8 +17,8 @@ import java.io.InputStream;
  */
 
 public class URLToImage extends AsyncTask<String, Void, Bitmap> {
-    ImageView bmImage;
-    String pathToFile;
+    private ImageView bmImage;
+    private String pathToFile;
 
     /**
      * Creates a new URLToImage

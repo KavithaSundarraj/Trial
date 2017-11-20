@@ -8,10 +8,10 @@ package com.example.shashidhar.trial;
 
 public class RssFeedModel {
 
-    public String title;
-    public String link;
-    public String description;
-    public String imgurl;
+    private String title;
+    private String link;
+    private String description;
+    private String imgurl;
 
     /**
      * Creates a new RssFeedModel
@@ -26,6 +26,41 @@ public class RssFeedModel {
         this.link = link;
         this.description = description;
         this.imgurl = imgurl;
+    }
+
+    /**
+     * To get title
+     * @return String
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * To get Link
+     * @return String
+     */
+
+    public String getLink() {
+        return link;
+    }
+
+    /**
+     * To get description
+     * @return String
+     */
+
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * To get imageurl
+     * @return String
+     */
+
+    public String getImgurl() {
+        return imgurl;
     }
 
 }

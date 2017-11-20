@@ -67,19 +67,19 @@ public class RssFeedListAdapter
 
         final RssFeedModel rssFeedModel = mRssFeedModels.get(position);
         // To display Title
-        ((TextView)holder.rssFeedView.findViewById(R.id.titleText)).setText(rssFeedModel.title);
+        ((TextView)holder.rssFeedView.findViewById(R.id.titleText)).setText(rssFeedModel.getTitle());
 
         //To display Description
-        ((TextView)holder.rssFeedView.findViewById(R.id.descriptionText)).setText(rssFeedModel.description);
+        ((TextView)holder.rssFeedView.findViewById(R.id.descriptionText)).setText(rssFeedModel.getDescription());
 
         // To display URL as link
         final TextView myClickableUrl = (TextView) holder.rssFeedView.findViewById(R.id.linkText);
-        myClickableUrl.setText(rssFeedModel.link);
+        myClickableUrl.setText(rssFeedModel.getLink());
         Linkify.addLinks(myClickableUrl, Linkify.WEB_URLS);
 
         //To display string as image
         ImageView bindImage = (ImageView)holder.rssFeedView.findViewById(R.id.imgurlText);
-        String pathToFile = rssFeedModel.imgurl;
+        String pathToFile = rssFeedModel.getImgurl();
         URLToImage downloadTask = new URLToImage(bindImage);
         downloadTask.execute(pathToFile);
     }

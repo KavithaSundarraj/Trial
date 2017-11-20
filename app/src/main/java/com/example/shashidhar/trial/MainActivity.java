@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         else {
             searchList = new ArrayList<>();
             for (RssFeedModel search : mFeedModelList) {
-                if (search.title.contains(SearchKey)) {
+                if (search.getTitle().contains(SearchKey)) {
                     searchList.add(search);
                 }
             }
